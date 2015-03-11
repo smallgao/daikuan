@@ -15,7 +15,7 @@ daikuan
 - password (string) 
 - password2 (string) 
 - email (string)
-- submit (string)
+- do_submit (string)
 
 
 > 返回结果：
