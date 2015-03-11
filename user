@@ -1,0 +1,308 @@
+tipask 
+2 ====== 
+3 #用户账号相关接口 
+4 
+ 
+5 ##检测用户 
+6 
+ 
+7 > URL：api_user/ajaxusername.html  (http://192.168.1.21/?api_user/ajaxusername.html) 
+8 
+ 
+9 > HTTP请求方式 
+10 
+ 
+11 - POST 
+12 
+ 
+13 > 请求参数： 
+14 
+ 
+15 - username (string) 
+16 
+ 
+17 
+ 
+18 > 返回结果： 
+19 
+ 
+20 1 
+21 
+ 
+22 > 可能返回的错误原因： 
+23 
+ 
+24 - 用户名已经存在! 
+25 - 非法用户名! 
+26 
+ 
+27 ##用户注册 
+28 
+ 
+29 > URL：api_user/register.html  (http://192.168.1.21/?api_user/register.html) 
+30 
+ 
+31 > HTTP请求方式 
+32 
+ 
+33 - POST 
+34 
+ 
+35 > 请求参数： 
+36 
+ 
+37 - username (string) 
+38 - password (string)  
+39 - email (string) 
+40 - submit (string) 
+41 
+ 
+42 
+ 
+43 > 返回结果： 
+44 
+ 
+45 - json 数组用户资料 
+46 
+ 
+47 > 可能返回的错误原因： 
+48 
+ 
+49 - 您已登录! 
+50 - 系统注册功能暂时处于关闭状态! 
+51 - 您的当前的IP已经超过当日最大注册数目，如有疑问请联系管理员! 
+52 - 用户名或密码不能为空! 
+53 - 邮件地址不合法! 
+54 - 此邮件地址已经注册! 
+55 - 邮件地址被禁止注册! 
+56 - 用户名已经存在! 
+57 
+ 
+58 ##用户登录 
+59 
+ 
+60 
+ 
+61 > URL：api_user/login.html  (http://192.168.1.21/?api_user/login.html) 
+62 
+ 
+63 > HTTP请求方式 
+64 
+ 
+65 - POST 
+66 
+ 
+67 > 请求参数： 
+68 
+ 
+69 - username (string) 
+70 - password (string)  
+71 
+ 
+72 > 返回结果： 
+73 
+ 
+74 - json 数组用户资料 
+75 
+ 
+76 > 可能返回的错误原因： 
+77 
+ 
+78 - 用户名或密码错误 
+79 
+ 
+80 
+ 
+81 
+ 
+82 ##编辑前获取用户信息 
+83 > URL：api_user/profile.html  (http://192.168.1.21/?api_user/profile.html) 
+84 
+ 
+85 > HTTP请求方式 
+86 
+ 
+87 - POST 
+88 
+ 
+89 > 请求参数： 
+90 
+ 
+91 - cookie 
+92 
+ 
+93 
+ 
+94 > 返回结果： 
+95 
+ 
+96 - json 数组用户资料 
+97 
+ 
+98 
+ 
+99 ##编辑用户 
+100 
+ 
+101 > URL：api_user/profile.html  (http://192.168.1.21/?api_user/profile.html) 
+102 
+ 
+103 > HTTP请求方式 
+104 
+ 
+105 - POST 
+106 
+ 
+107 > 请求参数： 
+108 
+ 
+109 - submit (string) 
+110 - gender(int)  1=>男,0=>女 
+111 - phone(string) 电话 
+112 - qq(string) qq 
+113 - nickname(string) 昵称 
+114 - provinceid(int)(省份ID) 
+115 - cityid(int)(城市ID) 
+116 - job(string) 职位 
+117 - introduction(string) 公司 
+118 - signature(string) 简介 
+119 > 返回结果： 
+120 - 编辑成功 
+121 
+ 
+122 > 可能返回的错误原因： 
+123 
+ 
+124 - 邮件格式不正确或已被占用! 
+125 
+ 
+126 
+ 
+127 
+ 
+128 ##编辑头像 
+129 
+ 
+130 
+ 
+131 > URL：api_user/editimg/{uid}.html  (http://192.168.1.21/?api_user/editimg/{uid}.html) 
+132 
+ 
+133 > HTTP请求方式 
+134 
+ 
+135 - POST 
+136 
+ 
+137 > 请求参数： 
+138 
+ 
+139 - userimage (file) 
+140 - uid (int) 
+141 - cookie 
+142 
+ 
+143 > 返回结果： 
+144 
+ 
+145 - 1 上传照片成功 
+146 
+ 
+147 
+ 
+148 ##我关注的问题 
+149 
+ 
+150 
+ 
+151 > URL：api_user/attention/question/{curpage}.html  (http://192.168.1.21/?api_user/attention/question/{curpage}.html) 
+152 
+ 
+153 > HTTP请求方式 
+154 
+ 
+155 - GET 
+156 
+ 
+157 > 请求参数： 
+158 
+ 
+159 - curpage (int) 
+160 - cookie 
+161 
+ 
+162 > 返回结果： 
+163 
+ 
+164 - rownum (int) (总的记录数) 
+165 - curpage (int) (当前分页) 
+166 - pagesize (int) (每页显示文章数) 
+167 - question (Array) (问题数组){id(问题id),cid(分类id),title(问题名称),category_name(分类名),format_time(问题发布时间)} 
+168 
+ 
+169 
+ 
+170 ##我的回答列表 
+171 
+ 
+172 
+ 
+173 > URL：api_user/answer/{status}/{curpage}.html  (http://192.168.1.21/?api_user/answer/{status}/{curpage}.html) 
+174 
+ 
+175 > HTTP请求方式 
+176 
+ 
+177 - GET 
+178 
+ 
+179 > 请求参数： 
+180 
+ 
+181 - status(0,1,2) 0-审核中，1-未采纳，2-已采纳 
+182 - curpage (int) 
+183 - cookie 
+184 
+ 
+185 > 返回结果： 
+186 
+ 
+187 - rownum (int) (总的记录数) 
+188 - curpage (int) (当前分页) 
+189 - pagesize (int) (每页显示文章数) 
+190 - status (int) (状态) 
+191 - answerlist (Array) (回答数组){qid(问题id),title(问题名称),content(回答的内容),format_time(回答时间)} 
+192 
+ 
+193 
+ 
+194 ##我的提问列表 
+195 
+ 
+196 
+ 
+197 > URL：api_user/ask/{status}/{curpage}.html  (http://192.168.1.21/?api_user/ask/{status}/{curpage}.html) 
+198 
+ 
+199 > HTTP请求方式 
+200 
+ 
+201 - GET 
+202 
+ 
+203 > 请求参数： 
+204 
+ 
+205 - status 状态说明 //0、未审核 1、待解决、2、已解决 4、悬赏的 9、 已关闭问题  
+206 - curpage (int) 
+207 - cookie 
+208 
+ 
+209 > 返回结果： 
+210 
+ 
+211 - rownum (int) (总的记录数) 
+212 - curpage (int) (当前分页) 
+213 - pagesize (int) (每页显示文章数) 
+214 - status (int) (状态) 
+215 - question (Array) (问题数组){id(问题id),cid(分类id),title(问题名称),category_name(分类名),format_time(问题发布时间)} 
